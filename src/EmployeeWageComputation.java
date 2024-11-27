@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 
 public class EmployeeWageComputation {
     public static void main(String[] args) {
-        System.out.print("Welcome to Employee Wage Computation Program");
+        System.out.println("Welcome to Employee Wage Computation Program");
         final int FULL_TIME = 1;
         final int PART_TIME = 2;
         final int WAGE_PER_HR = 20;
@@ -10,7 +10,7 @@ public class EmployeeWageComputation {
         final int MAX_WORKING_HRS = 100;
         int total_wage = 0;
         int workingHrs = 0;
-        for (int day = 1,totalworkingHrs=0; day<= MAX_WORKING_DAYS && totalworkingHrs < MAX_WORKING_HRS; day++,totalworkingHrs+=workingHrs) {
+        for (int day = 1,totalworkingHrs=0; day<= MAX_WORKING_DAYS && totalworkingHrs < MAX_WORKING_HRS; day++) {
             int empType = (int) (Math.random() * 100) % 3;
 
             switch (empType) {
@@ -26,11 +26,13 @@ public class EmployeeWageComputation {
 
                 default:
                     System.out.println("Employee is Absent");
+                    workingHrs = 0;
             }
             int wage = workingHrs * WAGE_PER_HR;
             System.out.println("Employee Daily Wage is " + wage);
             total_wage += wage;
-            System.out.println("Day="+day+", WorkingHrs="+workingHrs+", Wage="+wage+", Total Working Hrs="+totalworkingHrs+", Workinghrs="+workingHrs);
+            totalworkingHrs+=workingHrs;
+            System.out.println("Day= "+day+", WorkingHrs= "+workingHrs+", Wage= "+wage+", Total Working Hrs= "+totalworkingHrs);
         }
         System.out.println("Total wage for a month is " + total_wage);
     }
